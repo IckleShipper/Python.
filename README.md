@@ -1,10 +1,10 @@
 budget.py
 ---------
-You enter the movie number from https://www.themoviedb.org/. The program prints the movie's budget.
+You enter the movie's number from https://www.themoviedb.org/. The program prints the movie's budget.
 
 my_base.py
 ----------
-The program creates a database of movies, that contains movies' details from https://www.themoviedb.org/. The number of movies in the database is 1000 by default, but you can change it.
+The program creates a database of movies, that contains movies' details. The number of movies in the database is 1000 by default, but you can change it.
 
 
 original_title.py
