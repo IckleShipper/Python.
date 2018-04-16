@@ -9,12 +9,11 @@ import config
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 message_number = 0
-words = ['Яхта', 'Парус', 'одни', 'Ялта', 'Август', 'тобою']
 
 
 def check_word(text):
     if text is not None:
-        global words
+        words = ['Яхта', 'Парус', 'одни', 'Ялта', 'Август', 'тобою']
         for word in words:
             if text.find(word) != -1:
                 return ['Парус', 'В этом мире только мы одни~', 'Ялта', 'Август', 'И мы с тобою влюблены~', 'Мяу'][
