@@ -49,7 +49,7 @@ def add_json(new_post):
 
 
 def main():
-    new_posts = (vk_api.newsfeed.search(q='программирование Python', count=5))['items']
+    new_posts = (vk_api.newsfeed.search(q='программирование Python', count=3))['items']
     for new_post in new_posts:
         posts=add_json(new_post)
     return posts[int(random.uniform(0, len(posts)))]
