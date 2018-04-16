@@ -1,6 +1,7 @@
 import vk
 import json
 import random
+import os.path
 
 import config
 
@@ -35,27 +36,22 @@ def find_up_to_two_sentences(new_post, symbol):
 
 def add_json(new_post):
     new_post = make_a_dict(new_post)
-    try:
-        global posts
+    if os.path.isfile('posts.json'):
         posts = json.load(open('posts.json', encoding='utf-8'))
-        repeated = False
-        for post in posts:
-            if post['link'] == new_post['link'] or (post['preview'] != 0 and post['preview'] == new_post['preview']):
-                repeated = True
-                break
-        if not repeated:
+        if all(post['link'] != new_post['link'] and (post['preview'] == 0 or post['preview'] != new_post['preview']) for
+               post in posts):
             posts.append(new_post)
-    except FileNotFoundError:
+    else:
         posts = [new_post]
     with open('posts.json', 'w', encoding='utf-8') as file:
         json.dump(posts, file, indent=2, ensure_ascii=False)
+    return posts
 
 
 def main():
-    global posts
     new_posts = (vk_api.newsfeed.search(q='программирование Python', count=5))['items']
     for new_post in new_posts:
-        add_json(new_post)
+        posts=add_json(new_post)
     return posts[int(random.uniform(0, len(posts)))]
 
 
